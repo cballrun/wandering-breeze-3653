@@ -12,4 +12,14 @@ RSpec.describe Project, type: :model do
     it {should have_many :contestant_projects}
     it {should have_many(:contestants).through(:contestant_projects)}
   end
+
+  it 'counts the number of contestants on it' do
+    @jay = Contestant.create!(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
+    @recycled_material_challenge = Challenge.create!(theme: "Recycled Material", project_budget: 1000)
+    @news_chic = @recycled_material_challenge.projects.create!(name: "News Chic", material: "Newspaper")
+    @cp_1 = ContestantProject.create!(contestant_id: @jay.id, project_id: @news_chic.id)
+  
+    expect(@news_chic.contestant_count).to eq(1)
+  end
+
 end
