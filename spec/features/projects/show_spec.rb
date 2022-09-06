@@ -36,6 +36,18 @@ RSpec.describe 'the Project show' do
     expect(page).to have_content(12.5)
   end
 
+  it 'can add a contestant to a project' do
+    visit "/projects/#{@upholstery_tux.id}"
+    # expect(page).to have_content(1)
+
+    fill_in(:contestant_id, with: @jay.id)
+    click_button "Add Contestant to Project"
+
+    visit "/projects/#{@upholstery_tux.id}"
+
+    expect(page).to have_content(2)
+  end
+
 
 
 end
