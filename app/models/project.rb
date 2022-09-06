@@ -7,4 +7,13 @@ class Project < ApplicationRecord
   def contestant_count
     self.contestants.count
   end
+
+  def average_years_exp
+    total_years = 0
+    self.contestants.each do |c|
+      total_years += c.years_of_experience
+    end
+    total_years.to_f/self.contestant_count
+  end
+
 end

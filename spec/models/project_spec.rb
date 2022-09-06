@@ -36,6 +36,7 @@ RSpec.describe Project, type: :model do
   it 'can tell the average of the years of experience for contestants that worked on it' do
     
     expect(@upholstery_tux.average_years_exp).to eq(12)
+   
     expect(@news_chic.average_years_exp).to eq(12.5)
   end
 
